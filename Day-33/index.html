@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.lordicon.com/fudrjiwc.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <title>React Javascript day 33</title>
+</head>
+<body>
+    <h1>ReactJS Day 1 started</h1>
+
+    <lord-icon
+        src="https://cdn.lordicon.com/lupuorrc.json"
+        trigger="hover"
+        style="width:250px;height:250px">
+    </lord-icon>
+
+    <div style="display: flex; justify-content:space-between">
+        <div id="root"></div>
+        <div id="root1"></div>
+        <div id="root2"></div>
+        <div id="root3"></div>
+    </div>
+
+    <script type="text/babel">
+        // React code will go here
+        function Hello(){
+            return <h1> Hello React </h1>
+        }
+
+        function Hola(){
+            return <p> Hello React </p>
+        }
+
+        function Image(){
+            return <img src="https://i.pinimg.com/564x/45/43/ab/4543ab23cb03874fcc9c7bf6e0a54df3.jpg"></img>
+        }
+        
+        function Select(){
+            return <select>
+                <option>Lorem 2</option>
+                <option>Lorem 3</option>
+                <option>Lorem 4</option>
+                </select>
+        }
+
+        ReactDOM.render(<Hello/>, document.getElementById("root"))
+        ReactDOM.render(<Hola/>, document.getElementById("root1"))
+        ReactDOM.render(<Image/>, document.getElementById("root2"))
+        ReactDOM.render(<Select/>, document.getElementById("root3"))
+    </script>
+
+    
+    <script crossorigin="" src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin="" src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</body>
+</html>
