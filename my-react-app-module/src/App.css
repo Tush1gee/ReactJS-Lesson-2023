@@ -5,7 +5,7 @@
   box-sizing: border-box;
 }
 body {
-  background-image: url(https://images.pexels.com/photos/1036808/pexels-photo-1036808.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2);
+  background-image: url(https://img.freepik.com/premium-photo/abstract-flight-retro-neon-hyper-warp-space-tunnel-3d-illustration_250994-2075.jpg?w=2000);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -26,7 +26,7 @@ a {
 }
 
 h1 {
-  padding-top: 100px;
+  padding-top: 70px;
 }
 
 hr {
