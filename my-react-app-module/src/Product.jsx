@@ -1,19 +1,54 @@
-// import React from "react"
-function handleUpVote(props){
-  console.log('upvoted')
-  console.log(props.id)
-}
+import products from "./Seed"
+import { useState } from "react"
+import { Rating } from 'react-simple-star-rating'
 
+export default function ProductFunc(props){
+  const [votes, setVotes] = useState(props.votes)
+  const [stars, setStars] = useState(props.stars)
 
-function ProductFunc(props){
-    return (
+  function handleUpVote(props){
+    setVotes(votes + 1)
+    setStars(stars + 1)
+    function handDownVote(){
+      setStars(stars + 1)
+    }
+    function handleUpVote(props){
+      setVotes(votes + 1)
+    
+      if (stars < 5) {
+        setStars(0)
+      } else {
+        setStars(stars - 1)
+      }
+      console.log(stars)
+    }
+    
+    // console.log(props.id)
+    
+    // let newProducts = []
+
+    // const foundProduct = products.map(product => {
+    //   if(product.id == props.id) {
+    //    product.votes = product.votes + 1
+      
+    //   }
+    //   return product
+    // })
+  
+    // console.log(foundProduct)
+  }
+
+  return (
       <div className="select-first">
         <img src={props.productImageUrl}></img>
         <div className="all-text">
             <a onClick={() => {handleUpVote(props)}}>
               <h6>
-                <i class="fa-solid fa-caret-up">{props.id}</i>
+              <i class="fa-solid fa-caret-up">{votes}</i>
               </h6>
+          <Rating 
+            initialValue={stars}
+          />
             </a>
           <a>{props.title}</a>
           <p>{props.description}</p>
@@ -23,7 +58,7 @@ function ProductFunc(props){
     )
   }
 
-export default ProductFunc;
+
 
 // class Product extends React.Component {
 //     render() {
