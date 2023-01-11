@@ -1,0 +1,22 @@
+body {
+  background-color: rgb(255, 230, 194);
+}
+
+h1 {
+  background-color: teal;
+  text-align: center;
+  padding: 10px;
+  color: white;
+}
+
+button {
+  border: none;
+  padding: 10px;
+  background-color: rgb(0, 162, 255);
+  color: white;
+}
+
+p {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+}
