@@ -3,21 +3,48 @@ import ProductFunc from './Product';
 import products from './Seed';
 // import Product from './Product';
 
-function App() {
+function App() {  
   const productList = products.map((product) => {
-    function handleProductUpVote(productID){
-      console.log('upvote', productID )
+    // function handleProductUpVote(productID) {                  ///////////////////
+    //   console.log('upvote', productID)                                          //
+    //   const foundProduct = product.filter(product => {                          //  
+    //     if (product.id == productID) {                                          //
+    //       return product                                                        //
+    //     }                                                                       ////
+    //   })                                                                     ZASWARLAH HEREGTEI AJILLAHGUI BGA App.js Line 21:57: 
+    //                                                                             ////
+    //   console.log(foundProduct[0].votes)                                        //
+    //   foundProduct[0].vote = foundProduct[0].vote + 1;                          //
+    //   console.log(foundProduct[0].votes)                                        //
+    //                                                                             //
+    //   // change votes in product array                                          //
+    //   const [stateProductList , setStateProductList ] = useState(products) ///////
+
+      function handleProductUpVote(productID){
+        console.log(stateProductList)
+      }
+      const newProducts = stateProductList.map(product => {
+        if (product.id === productID) {
+          return Object.assign({}, product, {
+            votes: products.vote + 1
+          })
+        } else {
+          return product;
+        }
+
+      })
+      setStateProductList(newProducts)
     }
 
-    return <ProductFunc 
-      title={product.title} 
+    return <ProductFunc
+      title={product.title}
       id={product.id}
       description={product.description}
       url={product.url}
       votes={product.votes}
       submitterAvatarUrl={product.submitterAvatarUrl}
       productImageUrl={product.productImageUrl}
-      stars={product.stars} 
+      stars={product.stars}
       onVote={handleProductUpVote}
     />
   })
@@ -39,7 +66,7 @@ function App() {
     <div className='App'>
       <header className="app-header">
         <h1>Popular Products</h1>
-        <hr/>
+        <hr />
         {productList}
         {/* {productList2} */}
       </header>
