@@ -5,7 +5,9 @@ import products from './Seed';
 
 function App() {
   const productList = products.map((product) => {
-    console.log(product)
+    function handleProductUpVote(productID){
+      console.log('upvote', productID )
+    }
 
     return <ProductFunc 
       title={product.title} 
@@ -16,6 +18,7 @@ function App() {
       submitterAvatarUrl={product.submitterAvatarUrl}
       productImageUrl={product.productImageUrl}
       stars={product.stars} 
+      onVote={handleProductUpVote}
     />
   })
 

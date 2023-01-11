@@ -42,17 +42,15 @@ export default function ProductFunc(props){
       <div className="select-first">
         <img src={props.productImageUrl}></img>
         <div className="all-text">
-            <a onClick={() => {handleUpVote(props)}}>
+            <a onClick={() => props.onVote(props.id)}>
               <h6>
               <i class="fa-solid fa-caret-up">{votes}</i>
               </h6>
-          <Rating 
-            initialValue={stars}
-          />
             </a>
           <a>{props.title}</a>
           <p>{props.description}</p>
           <div className="submitted"><p>Submitted by:</p><img src={props.submitterAvatarUrl}></img></div>
+          <Rating initialValue={stars}/>
         </div>
       </div>
     )
