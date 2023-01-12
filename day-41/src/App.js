@@ -26,9 +26,9 @@ function App() {
   return (
     <div className="App">
       <UpdatingObject />
-      {/* <List/> */}
-      {/* <UpdateArrays /> */}
-      {/* <div className='ex1'>
+      <List/>
+      <UpdateArrays />
+      <div className='ex1'>
         <p>{counter}</p>
         <button onClick={ handleClick }>click</button>
       </div>
@@ -36,7 +36,7 @@ function App() {
       <div className='ex2'>
         <p>{inputText}</p>
         <input value={""} onChange={(e) => {handleInput()}} />
-      </div> */}
+      </div>
     </div>
   );
 }
