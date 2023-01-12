@@ -2,19 +2,19 @@ import products from "./Seed"
 import { useState } from "react"
 import { Rating } from 'react-simple-star-rating'
 
-export default function ProductFunc(props){
+export default function ProductFunc(props) {
   const [votes, setVotes] = useState(props.votes)
   const [stars, setStars] = useState(props.stars)
 
-  function handleUpVote(props){
+  function handleUpVote(props) {
     setVotes(votes + 1)
     setStars(stars + 1)
-    function handDownVote(){
+    function handDownVote() {
       setStars(stars + 1)
     }
-    function handleUpVote(props){
+    function handleUpVote(props) {
       setVotes(votes + 1)
-    
+
       if (stars < 5) {
         setStars(0)
       } else {
@@ -22,39 +22,39 @@ export default function ProductFunc(props){
       }
       console.log(stars)
     }
-    
+
     // console.log(props.id)
-    
+
     // let newProducts = []
 
     // const foundProduct = products.map(product => {
     //   if(product.id == props.id) {
     //    product.votes = product.votes + 1
-      
+
     //   }
     //   return product
     // })
-  
+
     // console.log(foundProduct)
   }
 
   return (
-      <div className="select-first">
-        <img src={props.productImageUrl}></img>
-        <div className="all-text">
-            <a onClick={() => props.onVote(props.id)}>
-              <h6>
-              <i class="fa-solid fa-caret-up">{votes}</i>
-              </h6>
-            </a>
-          <a>{props.title}</a>
-          <p>{props.description}</p>
-          <div className="submitted"><p>Submitted by:</p><img src={props.submitterAvatarUrl}></img></div>
-          <Rating initialValue={stars}/>
-        </div>
+    <div className="select-first">
+      <img src={props.productImageUrl}></img>
+      <div className="all-text">
+        <a onClick={() => props.onVote(props.id)}>
+          <h6>
+            <i class="fa-solid fa-caret-up">{votes}</i>
+          </h6>
+        </a>
+        <a>{props.title}</a>
+        <p>{props.description}</p>
+        <div className="submitted"><p>Submitted by:</p><img src={props.submitterAvatarUrl}></img></div>
+        <Rating initialValue={stars} />
       </div>
-    )
-  }
+    </div>
+  )
+}
 
 
 
