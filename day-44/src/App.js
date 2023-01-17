@@ -4,6 +4,8 @@ import AccordionFunc from './component/Accordion';
 import Index from './component/Index';
 import AboutPage from './component/AboutPage'
 import HomePage from './component/HomePage';
+import MoviesFunc from './component/Movies';
+import MovieFunc from './component/Movie';
 
 function App() {
   return (
@@ -13,6 +15,8 @@ function App() {
         <Route path={'accordion'} element={<AccordionFunc/>}/>
         <Route path={'home'} element={<HomePage/>}/>
         <Route path={'about'} element={<AboutPage/>}/>
+        <Route path={'moviesfunc'} element={<MoviesFunc/>}/>
+        <Route path={'/moviefunc/:id'} element={<MovieFunc/>}/>
       </Routes>
     </div>
   );
