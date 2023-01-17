@@ -1,4 +1,5 @@
 import {Link} from 'react-router-dom'
+
 export default function Index(){
 
     const aboutPageData = {
@@ -19,6 +20,9 @@ export default function Index(){
                 <Link to={'/about'} state={aboutPageData} >About Page</Link>
                 <Link to={'/home'} state={homePageData}>Home page</Link>
                 <Link to={'/accordion'}>Accordion Page</Link>
+                <Link to={'/moviesfunc'}>Movies Page</Link>
+                <Link to={'/gallery'}>Image Gallery</Link>
+                <Link to={'toast'}>Toaster Page</Link>
             </nav>
         </div>
     )
