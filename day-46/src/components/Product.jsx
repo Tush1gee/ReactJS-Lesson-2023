@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import { useState } from "react";
 
 export default function Product(props) {
-  const [liked, setLiked] = useState(false);
+ 
   const { id } = useParams();
   let foundProduct = {};
   if (id) {
@@ -19,6 +19,8 @@ export default function Product(props) {
   }
 
   const product = foundProduct;
+  const liked = props.wishlist.filter(wish => wish.id === product.id)[0];
+  console.log(liked);
   return (
     <div className="item">
       <div className="image">
@@ -33,7 +35,7 @@ export default function Product(props) {
           <a
             onClick={() => {
               console.log("heart icon is clicked");
-              setLiked(!liked);
+              // setLiked(!liked);
               if(!liked){
                 const likedProduct = {
                   id: product.id,
