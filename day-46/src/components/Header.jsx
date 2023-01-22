@@ -1,7 +1,11 @@
 export default function HeaderFunc(props) {
   return (
     <div className="ui menu">
+      <img src="./images/logo.png" alt="" />
+      <input type="text" name="text" placeholder="Search any things"></input>
+      <button>Search</button>
       <div className="right menu">
+        <a href="#">Sign in</a>
         <a className="item active">
           <div class="ui simple dropdown item">
             <i className="heart icon ">{props.wishlist.length}</i>

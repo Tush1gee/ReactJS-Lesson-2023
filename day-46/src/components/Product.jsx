@@ -4,7 +4,6 @@ import { useParams } from "react-router-dom";
 import { useState } from "react";
 
 export default function Product(props) {
- 
   const { id } = useParams();
   let foundProduct = {};
   if (id) {
@@ -19,24 +18,17 @@ export default function Product(props) {
   }
 
   const product = foundProduct;
-  const liked = props.wishlist.filter(wish => wish.id === product.id)[0];
+  const liked = props.wishlist.filter((wish) => wish.id === product.id)[0];
   console.log(liked);
   return (
     <div className="item">
-      <div className="image">
-        <img src={product.productImageUrl} />
-      </div>
       <div className="middle aligned content">
         <div className="header">
-          <a onClick={() => product.onVote(product.id)}>
-            <i className="large caret up icon" />
-          </a>
-          {product.votes}
           <a
             onClick={() => {
               console.log("heart icon is clicked");
-              // setLiked(!liked);
-              if(!liked){
+
+              if (!liked) {
                 const likedProduct = {
                   id: product.id,
                   name: product.title,
@@ -45,10 +37,9 @@ export default function Product(props) {
                 props.setWishlist([...props.wishlist, likedProduct]);
               } else {
                 props.setWishlist(
-                  props.wishlist.filter(w => w.id !== product.id)
-                )
+                  props.wishlist.filter((w) => w.id !== product.id)
+                );
               }
-
             }}
           >
             {liked ? (
@@ -58,15 +49,6 @@ export default function Product(props) {
             )}
           </a>
         </div>
-        <div className="description">
-          <a href={product.url}>{product.title}</a>
-          <p>{product.description}</p>
-        </div>
-        <div className="extra">
-          <span>Submitted by:</span>
-          <img className="ui avatar image" src={product.submitterAvatarUrl} />
-        </div>
-        <Rating initialValue={5} />
       </div>
     </div>
   );
