@@ -14,15 +14,9 @@ function App() {
       <HeaderFunc wishlist={wishlist} setWishlist={setWishlist} />
 
       <div className="main ui text container">
-        <h1 className="ui dividing centered header">Popular Products</h1>
         <div id="content"></div>
         <Routes>
-          <Route
-            path="/"
-            element={
-              <ProductList wishlist={wishlist} setWishlist={setWishlist} />
-            }
-          />
+          <Route path="/"element={<ProductList wishlist={wishlist} setWishlist={setWishlist} />}/>
           <Route path="/product/:id" element={<Product />} />
         </Routes>
         <Outlet />
