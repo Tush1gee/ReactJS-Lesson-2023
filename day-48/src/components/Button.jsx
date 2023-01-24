@@ -6,9 +6,9 @@ export default function Button () {
 
     useEffect(()=> {
         if(isPlaying) {
-            console.log('It is playing')
+            console.log('Aslaa')
         } else {
-            console.log('It is not Playing! ')
+            console.log('Untarlaa! ')
         }
     }, [isPlaying]);
     function handleClick(){
