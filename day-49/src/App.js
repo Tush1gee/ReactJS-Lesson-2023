@@ -1,23 +1,13 @@
-import logo from "./logo.svg";
 import "./App.css";
-import Counter from "./components/Counter";
-import { useState } from "react";
+import Timer from "./timercomponent/Timer";
+import TimerDashboard from "./timercomponent/TimerDashboard";
 
 function App() {
-  const [isFancy, setIsFancy] = useState(false);
   return (
     <div>
-      <Counter isFancy={isFancy} />
-      <label>
-        <input
-          type="checkbox"
-          checked={isFancy}
-          onChange={(e) => {
-            setIsFancy(e.target.checked);
-          }}
-        />
-        USe fancy styling
-      </label>
+      <h1>Timer App</h1>
+      <hr/>
+      <TimerDashboard/>
     </div>
   );
 }
