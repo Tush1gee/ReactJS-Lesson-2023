@@ -1,6 +1,11 @@
 import EditableTimer from "./EditableTimer";
 
-export default function EditTableTimerList({ timers, onTrashClick, onStartClick }) {
+export default function EditableTimerList({
+  timers,
+  onTrashClick,
+  onStartClick,
+  onStopClick
+}) {
   const timerList = timers.map((timer, index) => (
     <EditableTimer
       key={index}
@@ -11,6 +16,7 @@ export default function EditTableTimerList({ timers, onTrashClick, onStartClick 
       runningSince={timer.runningSince}
       onTrashClick={onTrashClick}
       onStartClick={onStartClick}
+      onStopClick={onStopClick}
     />
   ));
 

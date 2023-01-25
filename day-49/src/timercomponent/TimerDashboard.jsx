@@ -1,14 +1,30 @@
 import { useEffect, useState } from "react";
-import TimerData from "./Data/TimerData";
-import EditTableTimerList from "./EditTableTimerList";
-
+import timerData from "../timercomponent/Data/TimerData";
+import EditableTimerList from "./EditTableTimerList";
 export default function TimerDashboard() {
   const [timers, setTimers] = useState({ timers: [] });
 
   useEffect(() => {
-    //use effect ashiglan timers datag oruulj irsen.
-    setInterval(() => setTimers({ timers: TimerData }), 1000);
+    setInterval(() => setTimers({ timers: timerData }), 1000);
   }, []);
+
+  function handleStopClick(timerId) {
+    stopTimer(timerId)
+  }
+
+  function stopTimer(timerId) {
+    const now = Date.now()
+    setTimers({
+        timer: timers.timers.map(timer => {
+            if (timer.id === timerId) {
+                const lastElapsed = now - timer.runningSince;
+                timer.elapsed = timer.elapsed + lastElapsed;
+                timer.runningSince = null;
+            }
+            return timer;
+        })
+    })
+  }
 
   function handleStartClick(timerId) {
     startTimer(timerId);
@@ -18,7 +34,7 @@ export default function TimerDashboard() {
     const now = Date.now();
 
     setTimers({
-      timer: timers.timers.map((timer) => {
+      timers: timers.timers.map((timer) => {
         if (timer.id === timerId) {
           timer.runningSince = now;
           return timer;
@@ -41,13 +57,15 @@ export default function TimerDashboard() {
 
   return (
     <div>
-      <h1>Timers dashboard</h1>
+      <h1>Timers</h1>
+
       {timers.timers && (
         <div>
-          <EditTableTimerList
+          <EditableTimerList
             timers={timers.timers}
             onTrashClick={handleTrashClick}
             onStartClick={handleStartClick}
+            onStopClick={handleStopClick}
           />
         </div>
       )}
