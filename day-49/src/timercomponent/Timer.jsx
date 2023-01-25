@@ -1,45 +1,32 @@
 import Container from "@mui/material/Container";
-import { Card } from "@mui/material";
-import { Typography } from "@mui/material";
-import { Box } from "@mui/system";
+import Card from "@mui/material/Card";
+import { Box, Typography } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
-import CreateIcon from "@mui/icons-material/Create";
+import ModeEditIcon from "@mui/icons-material/ModeEdit";
 import TimerActionButton from "./TimerActionButton";
-import { useState } from "react";
-import { renderEllapsedString } from "./Helpers";
+import { renderElapsedString, renderEllapsedString } from "./Helpers";
 
-export default function Timer({
-  title,
-  project,
-  elapsed,
-  runningSince,
-  runningTimer,
-}) {
-  const [timerIsRunning, setTimerRunning] = useState(false);
+export default function Timer({ id, title, project, elapsed, runningSince, onTrashClick, onStartClick }) {
   const timer = renderEllapsedString(elapsed, runningSince);
-  const [startTime, setStartTime] = useState(null)
-  const [now, setNow] = useState(null);
 
-  function handleStart() {
-    //Start countin
-    setStartTime(Date.now());
-    setNow(Date.now());
-
-    setInterval(() => {
-      // update the curvent time every 10ms
-      setNow(Date.now());
-    }, 100);
+  function handleStartClick() {
+    onStartClick(id)
   }
 
-  let secondsPassed = 0;
-if(startTime != null && now != null) {
-  secondsPassed = (now - startTime) / 1000;
-}
+  function handleDelete(){
+    onTrashClick(id)
+  }
 
-  console.log(timer);
   return (
     <Container maxWidth="sm">
-      <Card sx={{ maxWidth: 345, margin: "0 auto", padding: "10px" }}>
+      <Card
+        sx={{
+          padding: '10px',
+          maxWidth: 345,
+          margin: '0 auto',
+          marginBottom: '15px'
+        }}
+      >
         <Typography sx={{ fontSize: 28 }} color="text.secondary">
           {title}
         </Typography>
@@ -52,33 +39,35 @@ if(startTime != null && now != null) {
             justifyContent: "center",
             alignItems: "center",
           }}
+        ></Box>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
         >
-          <h1>Time passed: {secondsPassed.toFixed(3)}</h1>
+          <h1>{timer}</h1>
         </Box>
-
         <Box
           sx={{
             display: "flex",
             justifyContent: "flex-end",
             alignItems: "center",
-            marginBottom: "5px",
+            marginBottom: 2,
           }}
         >
-          <DeleteIcon />
-          <CreateIcon />
+          <DeleteIcon onClick={handleDelete} />
+          <ModeEditIcon />
         </Box>
         <TimerActionButton
-          isTimerRunning={handleStart}
-          onStartClick={() => {
-            console.log("on start Click");
-            setTimerRunning(true);
-          }}
-          handleStart={handleStart}
+          isTimerRunning={runningSince}
+          // onStartClick={(handleStartClick) => {
+          // }}
+          onStartClick={handleStartClick}
           onStopClick={() => {
-            console.log("on stop Click !");
-            setTimerRunning(false);
+            console.log("stop");
           }}
-          
         />
       </Card>
     </Container>

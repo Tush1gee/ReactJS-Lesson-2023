@@ -1,35 +1,56 @@
 import { useEffect, useState } from "react";
-import TimerData from "./Data/TimerData"
-import Timer from "./Timer"
-import TimerForm from "./TimerForm";
-
+import TimerData from "./Data/TimerData";
+import EditTableTimerList from "./EditTableTimerList";
 
 export default function TimerDashboard() {
-const [timers, setTimers] = useState([]);
-const [runningTime, setRunningTime] = useState(0);
+  const [timers, setTimers] = useState({ timers: [] });
 
+  useEffect(() => {
+    //use effect ashiglan timers datag oruulj irsen.
+    setInterval(() => setTimers({ timers: TimerData }), 1000);
+  }, []);
 
-useEffect(()=> { //use effect ashiglan timers datag oruulj irsen.
-    setTimers(TimerData)
-}, [timers]);
+  function handleStartClick(timerId) {
+    startTimer(timerId);
+  }
 
+  function startTimer(timerId) {
+    const now = Date.now();
 
-    return (
+    setTimers({
+      timer: timers.timers.map((timer) => {
+        if (timer.id === timerId) {
+          timer.runningSince = now;
+          return timer;
+        } else {
+          return timer;
+        }
+      }),
+    });
+  }
+
+  function handleTrashClick(timerId) {
+    deleteTimer(timerId);
+  }
+
+  function deleteTimer(timerId) {
+    setTimers({
+      timers: timers.timers.filter((t) => t.id !== timerId),
+    });
+  }
+
+  return (
+    <div>
+      <h1>Timers dashboard</h1>
+      {timers.timers && (
         <div>
-            {TimerData && 
-            TimerData.map((data, index)=> {
-                return (
-                    <Timer 
-                    key={index}
-                    title={data.title}
-                    project={data.project}
-                    elapsed={data.elapsed}
-                    runningSince={data.runningSince}
-                    runningTime={runningTime}
-                    />
-                )
-            })}
-            <TimerForm title={"Title"} project={"Project"}/>
+          <EditTableTimerList
+            timers={timers.timers}
+            onTrashClick={handleTrashClick}
+            onStartClick={handleStartClick}
+          />
         </div>
-    )
+      )}
+    </div>
+  );
 }
