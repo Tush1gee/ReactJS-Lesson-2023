@@ -1,12 +1,43 @@
 import { useEffect, useState } from "react";
 import timerData from "../timercomponent/Data/TimerData";
 import EditableTimerList from "./EditTableTimerList";
+import TimerForm from "./TimerForm";
+import ToggleableTimerForm from "./ToggleableTimerForm";
+import { newTimer } from "./Helpers"
+
 export default function TimerDashboard() {
   const [timers, setTimers] = useState({ timers: [] });
 
   useEffect(() => {
-    setInterval(() => setTimers({ timers: timerData }), 1000);
+    setInterval(() => setTimers({ timers: timerData }), 10000);
   }, []);
+
+  function handleCreateFormSubmit (timer){
+    createTimer(timer)
+  }
+
+  function createTimer(timer){
+    const t = newTimer(timer)
+    setTimers({
+        timers: timers.timers.concat(t)
+    });
+  }
+
+  function handleEditFormSubmit(timer){
+    updateTimer(timer)
+  }
+
+  function updateTimer(attributes){
+    setTimers({
+        timer: timers.timers.map(timer => {
+            if(timer.id === attributes.id) {
+                timer.title = attributes.title
+                timer.project = attributes.project
+            }
+            return timer
+        }),
+    });
+  }
 
   function handleStopClick(timerId) {
     stopTimer(timerId)
@@ -66,6 +97,10 @@ export default function TimerDashboard() {
             onTrashClick={handleTrashClick}
             onStartClick={handleStartClick}
             onStopClick={handleStopClick}
+            onFormSubmit={handleEditFormSubmit}
+          />
+          <ToggleableTimerForm
+            onFormSubmit={handleCreateFormSubmit}
           />
         </div>
       )}

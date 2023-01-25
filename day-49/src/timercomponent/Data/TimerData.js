@@ -2,7 +2,7 @@ const TimerData = [
   {
     title: "Mow the lawn",
     project: "House Chores",
-    elapsed: 5459795,
+    elapsed:200000,
     id: "0a4a79cb-b06d-4cb1-883d-549a1e3b66d7",
     runningSince: null,
   },
