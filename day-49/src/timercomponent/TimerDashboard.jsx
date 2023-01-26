@@ -9,7 +9,7 @@ export default function TimerDashboard() {
   const [timers, setTimers] = useState({ timers: [] });
 
   useEffect(() => {
-    setInterval(() => setTimers({ timers: timerData }), 10000);
+    setInterval(() => setTimers({ timers: timerData }), 1000);
   }, []);
 
   function handleCreateFormSubmit (timer){
