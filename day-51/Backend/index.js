@@ -2,7 +2,7 @@ console.log('DAY-51 : API Express JS');
 const express = require('express')
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const { response } = require('express');
+const { response, request } = require('express');
 
 const app = express();
 const PORT = 8080;
@@ -35,7 +35,8 @@ app.post("/data", (request, response) => {
         name: request.body.name,
         age: request.body.age,
     }
-    data.push(newData)
+
+    data = [...data, newData]
     response.json(data);
 })
 
@@ -44,6 +45,23 @@ app.delete("/data", (request, response) => {
     const newData = data.filter(d => d.id !== request.body.id);
     data = newData
     console.log(data)
+    response.json(data);
+})
+
+app.put("/data", (request, response) => {
+    console.log(request.body)
+    console.log(data);
+
+    const newData = data.map(d => {
+        if(d.id === request.body.id) {
+            d.name = request.body.name
+            d.name = request.body.age
+        }
+        return d
+    })
+
+    data = newData;
+
     response.json(data);
 })
 
