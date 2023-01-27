@@ -62,6 +62,7 @@ function App() {
         <UpdateForm
          setCurrentData={setCurrentData}
          currentData={currentData}
+         setData={setData}
         />
       ) : (
         <div></div>
