@@ -1,17 +1,40 @@
+h1 {
+  background-color: teal;
+  padding: 10px;
+  color: aliceblue;
+  margin-bottom: 10px;
+}
+
 * {
   margin: 0 auto;
   text-align: center;
+  box-sizing: border-box;
 }
 
 .App {
   background-color: rgb(90, 211, 254);
   padding: 10px;
-  width: 250px;
+  width: 450px;
   margin: 0 auto;
   border-radius: 10px;
 }
 
 form {
-  padding: 10px;
+  padding: 20px;
   text-align: center;
+}
+
+input {
+  border: none;
+  padding: 13px;
+  border-radius: 16px;
+  margin: 5px;
+}
+
+button {
+  border: none;
+  padding: 10px;
+  border-radius: 20px;
+  color: white;
+  background-color: black;
 }
