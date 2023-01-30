@@ -12,7 +12,6 @@ function App() {
   const [isOpenForm, setIsOpenForm] = useState(false);
   const [currentData, setCurrentData] = useState({});
 
-
   useEffect(() => {
     fetchData();
   }, []);
@@ -60,9 +59,9 @@ function App() {
       />
       {isOpenForm ? (
         <UpdateForm
-         setCurrentData={setCurrentData}
-         currentData={currentData}
-         setData={setData}
+          setCurrentData={setCurrentData}
+          currentData={currentData}
+          setData={setData}
         />
       ) : (
         <div></div>

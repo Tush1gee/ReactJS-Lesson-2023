@@ -1,8 +1,6 @@
 const express = require("express");
 const cors = require("cors");
 const fs = require("fs");
-const { request } = require("http");
-const { response } = require("express");
 const app = express();
 const PORT = 8080;
 
@@ -11,7 +9,6 @@ app.use(express.json());
 
 app.delete("/users", (request, response) => {
   const body = request.body;
-
   fs.readFile("./data/users.json", "utf-8", (readError, readData) => {
     if (readError) {
       response.json({
@@ -19,13 +16,13 @@ app.delete("/users", (request, response) => {
         data: [],
       });
     }
+
     const readObject = JSON.parse(readData);
 
     const filteredObjects = readObject.filter((o) => o.id !== body.userId);
     fs.writeFile(
       "./data/users.json",
       JSON.stringify(filteredObjects),
-
       (writeError) => {
         if (writeError) {
           response.json({
