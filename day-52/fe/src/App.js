@@ -5,6 +5,12 @@ function App() {
   const URL = "http://localhost:8080/users";
 
   const [users, setUsers] = useState([]);
+  const [isUpdate, setIsUpdate] = useState(false);
+  const [currentUser, setCurrentUser] = useState({
+    id: "",
+    username: "",
+    age: "",
+  });
 
   useEffect(() => {
     fetchAllData();
@@ -35,23 +41,70 @@ function App() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    const postData = {
-      username: e.target.username.value,
-      age: e.target.age.value,
-    };
 
-    const options = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(postData),
-    };
+    if (!isUpdate) {
+      const postData = {
+        username: e.target.username.value,
+        age: e.target.age.value,
+      };
 
-    const FETCHED_DATA = await fetch(URL, options);
-    const FETCHED_JSON = await FETCHED_DATA.json();
-    console.log(FETCHED_JSON);
-    setUsers(FETCHED_JSON.data);
+      const options = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(postData),
+      };
+
+      const FETCHED_DATA = await fetch(URL, options);
+      const FETCHED_JSON = await FETCHED_DATA.json();
+      console.log(FETCHED_JSON);
+      setUsers(FETCHED_JSON.data);
+    } else {
+      const putData = {
+        id: currentUser.id,
+        username: currentUser.username,
+        age: currentUser.age,
+      };
+      const options = {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(putData),
+      };
+      const FETCHED_DATA = await fetch(URL, options);
+      const FETCHED_JSON = await FETCHED_DATA.json();
+      setUsers(FETCHED_JSON.data);
+    }
+  }
+
+  async function handleEdit(userId) {
+    setIsUpdate(true);
+
+    const filterUser = users.filter((user) => user.id === userId)[0];
+
+    if (filterUser) {
+      setCurrentUser({
+        id: filterUser.id,
+        age: filterUser.age,
+        username: filterUser.username,
+      });
+    }
+  }
+
+  function handleUserName(e) {
+    setCurrentUser({
+      ...currentUser,
+      username: e.target.value,
+    });
+  }
+
+  function handleUserAge(e) {
+    setCurrentUser({
+      ...currentUser,
+      age: e.target.value,
+    });
   }
 
   return (
@@ -59,15 +112,19 @@ function App() {
       <form onSubmit={handleSubmit}>
         <label>
           User Name:
-          <input name="username" />
+          <input
+            name="username"
+            value={currentUser.username}
+            onChange={handleUserName}
+          />
         </label>
         <br />
         <label>
           Age:
-          <input name="age" />
+          <input name="age" value={currentUser.age} onChange={handleUserAge} />
         </label>
         <br />
-        <button>Submit</button>
+        <button>{isUpdate ? "Update" : "Submit"}</button>
       </form>
       <h3>Users List</h3>
       {users &&
@@ -77,6 +134,7 @@ function App() {
               <p>
                 {user.username} : {user.age}{" "}
                 <button onClick={() => handleDelete(user.id)}>Delete</button>
+                <button onClick={() => handleEdit(user.id)}>Edit</button>
               </p>
             </div>
           );
