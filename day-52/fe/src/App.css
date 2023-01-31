@@ -13,6 +13,7 @@
 
 form {
   padding: 10px;
+  text-align: center;
 }
 
 input {
@@ -32,4 +33,31 @@ button {
   margin: 3px;
   color: white;
   background-color: rgb(19, 102, 196);
+  transition: all 300ms;
+}
+
+button:hover {
+  width: 100px;
+  padding: 3px;
+  border-radius: 15px;
+  border: none;
+  margin: 3px;
+  color: rgb(31, 99, 193);
+  background-color: rgb(255, 255, 255);
+
+}
+
+.btn-area {
+  border: 1px solid black;
+  margin-top: 10px;
+  padding: 3px;
+}
+
+.btn-area p {
+  display: flex;
+  justify-content: space-between;
+}
+
+.buttom-area {
+  display: flex;
 }
