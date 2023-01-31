@@ -11,7 +11,6 @@ app.use(express.json());
 
 app.delete("/users", (request, response) => {
   const body = request.body;
-
   fs.readFile("./data/users.json", "utf-8", (readError, readData) => {
     if (readError) {
       response.json({
@@ -19,13 +18,13 @@ app.delete("/users", (request, response) => {
         data: [],
       });
     }
+
     const readObject = JSON.parse(readData);
 
     const filteredObjects = readObject.filter((o) => o.id !== body.userId);
     fs.writeFile(
       "./data/users.json",
       JSON.stringify(filteredObjects),
-
       (writeError) => {
         if (writeError) {
           response.json({
@@ -98,6 +97,43 @@ app.post("/users", (request, response) => {
           status: "success",
           data: dataObject,
         });
+      }
+    );
+  });
+});
+
+app.put("/users", (request, response) => {
+  console.log(request.body);
+
+  fs.readFile("./data/users.json", "utf-8", (readError, readData) => {
+    if (readError) {
+      response.json({
+        status: "file read error",
+        data: [],
+      });
+    }
+    const savedData = JSON.parse(readData);
+    const changedData = savedData.map((d) => {
+      if (d.id === request.body.id) {
+        (d.username = request.body.username), (d.age = request.body.age);
+      }
+      return d;
+    });
+
+    fs.writeFile(
+      "./data/users.json",
+      JSON.stringify(changedData),
+      (writeError) => {
+        if (writeError) {
+          response.json({
+            status: "file write error",
+            data: [],
+          });
+          response.json({
+            status: "success",
+            data: changedData,
+          });
+        }
       }
     );
   });
