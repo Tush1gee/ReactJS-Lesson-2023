@@ -3,14 +3,15 @@ import { useState, useEffect } from "react";
 
 function App() {
   const URL = "http://localhost:8080/users";
-
-  const [users, setUsers] = useState([]);
-  const [isUpdate, setIsUpdate] = useState(false);
-  const [currentUser, setCurrentUser] = useState({
+  const newUser = {
     id: "",
     username: "",
     age: "",
-  });
+  };
+
+  const [users, setUsers] = useState([]);
+  const [isUpdate, setIsUpdate] = useState(false);
+  const [currentUser, setCurrentUser] = useState(newUser);
 
   useEffect(() => {
     fetchAllData();
@@ -76,6 +77,8 @@ function App() {
       const FETCHED_DATA = await fetch(URL, options);
       const FETCHED_JSON = await FETCHED_DATA.json();
       setUsers(FETCHED_JSON.data);
+      setIsUpdate(false);
+      setCurrentUser(newUser);
     }
   }
 
@@ -126,15 +129,18 @@ function App() {
         <br />
         <button>{isUpdate ? "Update" : "Submit"}</button>
       </form>
+
       <h3>Users List</h3>
       {users &&
         users.map((user, index) => {
           return (
-            <div key={index}>
+            <div key={index} className="btn-area">
               <p>
                 {user.username} : {user.age}{" "}
-                <button onClick={() => handleDelete(user.id)}>Delete</button>
-                <button onClick={() => handleEdit(user.id)}>Edit</button>
+                <div className="button-area">
+                  <button onClick={() => handleDelete(user.id)}>Delete</button>
+                  <button onClick={() => handleEdit(user.id)}>Edit</button>
+                </div>
               </p>
             </div>
           );
