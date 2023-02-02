@@ -1,11 +1,7 @@
 import "./App.css";
 import { useState, useEffect } from "react";
-import {
-  fetchAllData,
-  deleteUser,
-  updateUser,
-  createUser,
-} from "./services/usersServices";
+import { updateUser, createUser } from "./services/usersServices";
+import { fetchAllData, deleteUser } from "./services/axiosUsersService";
 
 function App() {
   const URL = "http://localhost:8080/users";
