@@ -39,6 +39,20 @@ export default function TimersDashboard() {
    
   }
 
+  async function deleteTimer(timerId) {
+    const FETCHED_DATA = await axios ({
+      url: URL,
+      method: "DELETE",
+      data: {
+        timerId: timerId,
+      },
+    });
+    setTimers({
+      timers: FETCHED_DATA.data.data
+    })
+
+  }
+
   function handleStartClick(timerId) {
     startTimer(timerId);
   }
@@ -94,19 +108,6 @@ export default function TimersDashboard() {
     });
   }
 
-  async function deleteTimer(timerId) {
-    const FETCHED_DATA = await axios ({
-      url: URL,
-      method: "DELETE",
-      data: {
-        timerId: timerId,
-      },
-    });
-    setTimers({
-      timers: FETCHED_DATA.data.data
-    })
-
-  }
 
   return (
     <div>
