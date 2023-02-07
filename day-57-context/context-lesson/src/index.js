@@ -3,11 +3,12 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import BooksList from "./BooksList";
+import ContextMainTest from "./ContextMainTest";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <BooksList />
+    <ContextMainTest/>
   </React.StrictMode>
 );
 
