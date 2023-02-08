@@ -3,13 +3,15 @@ import "./App.css";
 import { useState } from "react";
 import List from "./components/List";
 import { ImageContextProvider } from "./Context/ImageContext";
+import StopWatch from "./components/StopWatch";
 
 function App() {
   const [isLarge, setIsLarge] = useState(false);
 
   return (
     <div className="App">
-      <label>
+      <StopWatch />
+      {/* <label>
         Use Large Image
         <input
           type="checkbox"
@@ -20,7 +22,7 @@ function App() {
         />
       </label>
       <hr />
-      <List />
+      <List /> */}
     </div>
   );
 }
