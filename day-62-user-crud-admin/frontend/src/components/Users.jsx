@@ -1,3 +1,4 @@
+import { Grid } from "@mui/material";
 import React, { useEffect, useState } from "react";
 
 export default function Users() {
@@ -20,6 +21,9 @@ export default function Users() {
   return (
     <div>
         <h1>users list page</h1>
+        <Grid container spacing={1}
+        direction="column" alignItems="center" justifyContent="center" backgroundColor="teal"  color="white" padding="15px">
+
         <table>
             <thead>
                 <tr>
@@ -27,6 +31,7 @@ export default function Users() {
                     <th>Last Name</th>
                     <th>Email</th>
                     <th>Address</th>
+                    <th>Role</th>
                 </tr>
             </thead>
             <tbody> 
@@ -37,11 +42,13 @@ export default function Users() {
                     <td>{user.lastname}</td>
                     <td>{user.email}</td>
                     <td>{user.address}</td>
+                    <td>{user.role.name}</td>
                 </tr>
             )
         })}
             </tbody>
         </table>
+        </Grid>
     </div>
     )
 }
