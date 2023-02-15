@@ -1,1 +1,10 @@
-[{"firstname":"Tushig","lastname":"Munkhbayar","email":"tushig@gmail.com","password":"12345678","address":"addess","role":{"id":1,"name":"Admin"}},{"email":"tushig0721@gmail.com","password":"1234"},{"firstname":"Tushig","lastname":"Munkhbayar","email":"tushig@gmail.com","password":"","address":""},{"firstName":"Tushig","lastName":"Munkhbayar","email":"black.munkhbayar.tushigee@gmail.com","password":"$2b$10$ZCbM7MI87QbAVXQAcm19j.SyXFdNC9PB8vcW9pXol95X18s84j4Te","address":"address1234","role":{"id":1,"name":"Admin"}}]
+[
+  {
+    "firstName": "Tushig",
+    "lastName": "Munkhbayar",
+    "email": "tushig@gmail.com",
+    "password": "$2b$10$aSryvKTVmNSL.6bdLY20IuLPZFIHqadkh297XMHFEDA1x6abJo.UW",
+    "address": "address1234",
+    "role": { "id": 2, "name": "User" }
+  }
+]

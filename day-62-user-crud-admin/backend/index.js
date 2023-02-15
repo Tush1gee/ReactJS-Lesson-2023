@@ -19,7 +19,7 @@ app.post("/register", (request, response) => {
   fs.readFile("./data/users.json", "utf-8", (readError, readData) => {
     if (readError) {
       response.json({
-        status: "file read error",
+        status: "file read error 🔴",
         users: [],
       });
     }
@@ -30,7 +30,7 @@ app.post("/register", (request, response) => {
     fs.readFile("./data/userrole.json", "utf-8", (readError, readData) => {
       if (readError) {
         response.json({
-          status: "file unshihad aldaa garlaa !",
+          status: "file unshihad aldaa garlaa 🔴!",
           data: [],
         });
       }
@@ -42,14 +42,14 @@ app.post("/register", (request, response) => {
       bcrypt.genSalt(SALT_ROUNDS, (err, salt) => {
         if (err) {
           response.json({
-            status: "generating salt error",
+            status: "generating salt error 🔴",
           });
         }
 
         bcrypt.hash(userPassword, salt, (hashError, hashData) => {
           if (hashError) {
             response.json({
-              status: "generating has error",
+              status: "generating has error 🔴",
               data: [],
             });
           }
@@ -73,11 +73,11 @@ app.post("/register", (request, response) => {
             (writeError) => {
               if (writeError) {
                 response.json({
-                  status: "Aldaa garlaa !!! JSON file zuruud bn",
+                  status: "Aldaa garlaa !!! JSON file zuruud bn 🔴",
                 });
               }
               response.json({
-                status: "Amjilttai",
+                status: "Amjilttai 🟢",
                 data: readDataObj,
               });
             }
@@ -97,7 +97,7 @@ app.post("/login", (request, response) => {
     if (readError) {
       response.json({
         // hervee file unshihad amjiltgui bolwol
-        status: "file not found",
+        status: "file not found 🔴",
         data: [],
       });
     }
@@ -111,28 +111,45 @@ app.post("/login", (request, response) => {
     // herwee hereglegch users.json baihgui oldohgui bol hereglec oldsongui gj butsaana
     if (foundUser.length === 0) {
       response.json({
-        status: "User Not Found",
+        status: "User Not Found 🔴",
         data: [],
       });
     } else {
       // herwee hereglegch oldson bol
       const foundUserObj = foundUser[0];
       console.log("FoundUser", foundUserObj);
+      const plainPassword = body.password;
+      const savedPassword = foundUserObj.password;
 
-      if (foundUserObj.password === body.password) {
-        response.json({
-          status: "Хэрэглэгчийн нэр эсвэл нууц үг буруу байна",
-        });
-      } else {
-        response.json({
-          status: "Амжилттай!",
-          data: {
-            email: foundUser.email,
-            firstName: foundUserObj.firstName,
-            lastName: foundUserObj.lastName,
-          },
-        });
-      }
+      bcrypt.compare(
+        plainPassword,
+        savedPassword,
+        (compareError, compareResult) => {
+          if (compareError) {
+            response.json({
+              status: "Хэрэглэгчийн нууц үг эсвэл нэвтрэх нэр буруу байна 🔴",
+              data: [],
+            });
+          }
+
+          if (compareResult) {
+            console.log("it matches 🟢");
+            response.json({
+              status: "Амжилттай!🟢",
+              data: {
+                email: foundUser.email,
+                firstName: foundUserObj.firstName,
+                lastName: foundUserObj.lastName,
+              },
+            });
+          } else {
+            console.log("invalid password 🔴");
+            response.json({
+              status: "Хэрэглэгчийн нэр эсвэл нууц үг буруу байна 🔴",
+            });
+          }
+        }
+      );
     }
   });
 });
