@@ -42,7 +42,7 @@ export default function Users() {
                     <td>{user.lastname}</td>
                     <td>{user.email}</td>
                     <td>{user.address}</td>
-                    <td>{user.role.name}</td>
+                    <td>{user.roleName}</td>
                 </tr>
             )
         })}
