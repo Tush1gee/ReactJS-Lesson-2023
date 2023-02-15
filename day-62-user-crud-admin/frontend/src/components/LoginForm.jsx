@@ -25,7 +25,7 @@ export default function LoginForm() {
         const FETCHED_JSON = await FETCHED_DATA.json()
 
         if(FETCHED_JSON.status === "success") {
-            toast("Хэрэглэгч амжилттай нэвтэрлээ");
+            toast("Хэрэглэгч амжилттай нэвтэрлээ 🟢");
             navigate("/users");
         } else {
             toast(FETCHED_JSON.status);
