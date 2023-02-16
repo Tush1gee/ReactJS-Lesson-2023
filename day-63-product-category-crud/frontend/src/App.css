@@ -1,38 +1,91 @@
+* {
+  box-sizing: border-box;
+}
 .App {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.search-body {
+  background-color: #0fe95f;
+  padding: 10px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.list-names {
+  background-color: #0fe95f;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.cat-form {
+  background-color: #bbffc4;
+  border: none;
+  padding: 10px 20px;
+  margin-top: 10px;
+  border-radius: 10px;
+  transition: all 300ms;
+}
+.cat-form:hover {
+  background-color: #35ff57;
+  border: none;
+  padding: 10px 20px;
+  margin-top: 10px;
+  border-radius: 10px;
+}
+
+.cat-inp {
+  padding: 10px 20px;
+}
+
+.cat-id{
+  width: 200px;
+  border: 1px solid black;
+}
+
+.cat-id {
+  width: 200px;
+  border: 1px solid black;
+}
+
+.cat-id:nth-child(3) {
+  width: 140px;
+  border: 1px solid black;
+}
+
+
+.cat-id:last-child {
+  width: 140px;
+  border: 1px solid black;
+}
+
+.editbtn {
+  padding: 2px 50px;
+  border-radius: 10px;
+  background-color: rgb(16, 246, 127);
+  border: none;
+}
+.deletebtn {
+  padding: 2px 50px;
+  border-radius: 10px;
+  border: 2px solid greenyellow;
+  border: none;
+}
+
+.border {
+  border: 1px solid black;
+  padding: 4px;
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+.table {
+  margin: 0 auto;
+  margin-top: 30px;
+}
+
+body {
+  background-color: #000000;
+}
+h1 {
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+h5 {
+  color: white;
 }

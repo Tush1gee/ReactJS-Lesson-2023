@@ -1,9 +1,11 @@
+import {toast} from 'react-toastify'
 import React from "react";
 import { useEffect } from "react";
 import { useState } from "react";
+import { Link } from 'react-router-dom';
 
 export default function Categories() {
-    const URL = "http://localhost:8085/category"
+    const URL = "http://localhost:8083/category"
     const [ categories, setCategories] = useState([])
 
     useEffect(() => {
@@ -18,31 +20,72 @@ export default function Categories() {
         }
     }
 
+    async function handleCategoryDelete (categoryId) {
+        console.log(categoryId)
+        const options = {
+            method: "DELETE",
+            headers: {
+                'Content-Type' : 'application/json',
+            },
+            body: JSON.stringify(
+                {
+                    categoryId: categoryId,
+                },
+            )
+        }
+        const FETCHED_DATA = await fetch(URL, options)
+        const FETCHED_JSON = await FETCHED_DATA.json();
+        if(FETCHED_JSON.status === 'success') {
+            toast(`Category with id = ${categoryId} delete successfully`)
+            console.log(FETCHED_JSON.data);
+            setCategories(FETCHED_JSON.data);
+        }
+    }
+
+    async function handleSearchSubmit(e) {
+        e.preventDefault();
+        const searchInput = e.target.search.value;
+        const SEARCH_URL = `http://localhost:8083/search?value=${searchInput}`;
+        const FETCHED_DATA = await fetch(SEARCH_URL);
+        const FETCHED_JSON = await FETCHED_DATA.json();
+        if(FETCHED_JSON.status === 'success') {
+            setCategories(FETCHED_JSON.data);
+        }
+        
+    }
+
 
   return (
     <div>
         <h1>Categorie list Page</h1>
-        <table>
-            <thead>
-                <tr>
-                    <td>Category ID</td>
-                    <td>Category Name</td>
-                    <td>Edit</td>
-                    <td>Delete</td>
+
+        <form onSubmit={handleSearchSubmit} className="search-body">
+            <input name="search" placeholder='search'/>
+            <button type='submit'>Search</button>
+        </form>
+
+        <table className='table'>
+            <thead className='thead'>
+                <tr className='list-names'>
+                    <td className='cat-id'>Category ID</td>
+                    <td className='cat-id'>Category Name</td>
+                    <td className='cat-id'>Edit</td>
+                    <td className='cat-id'>Delete</td>
                 </tr>
             </thead>
             <tbody>
                 {
                     categories && categories.map((category, index) => {
+                    
                         return (
                         <tr key={index}>
-                            <td>{category.id}</td>
-                            <td>{category.name}</td>
-                                <td>
-                                    <button>Edit</button>
+                            <td className='border'>{category.id}</td>
+                            <td className='border'>{category.name}</td>
+                                <td className='border'>
+                                    <Link to={`/category/edit/${category.id}`}><button className="editbtn">Edit</button></Link>
                                 </td>
-                                <td>
-                                    <button>Delete</button>
+                                <td className='border'>
+                                    <button onClick={() => handleCategoryDelete(category.id)} className="deletebtn">Delete</button>
                                 </td>
                         </tr>
                         )

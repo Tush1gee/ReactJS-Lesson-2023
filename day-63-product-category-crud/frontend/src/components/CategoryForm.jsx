@@ -2,7 +2,7 @@ import React from "react";
 import {useNavigate} from "react-router-dom"
 
 export default function CategoryForm() {
-    const URL = "http://localhost:8085/category"
+    const URL = "http://localhost:8083/category"
     const navigate = useNavigate();
 
     async function handleCategorySubmit (e) {
@@ -31,9 +31,9 @@ export default function CategoryForm() {
     <div>
         <h1>Category crud page</h1>
         <form onSubmit={handleCategorySubmit}>
-            <input type="text" name="catName"/>
+            <input className="cat-inp" type="text" name="catName" placeholder="upload product name"/>
             <br/>
-            <button type="submit" >Submit</button>
+            <button className="cat-form" type="submit" >Submit</button>
         </form>
     </div>
   )
