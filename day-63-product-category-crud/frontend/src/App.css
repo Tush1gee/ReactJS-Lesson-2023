@@ -69,9 +69,9 @@
 }
 
 .border {
-  border: 1px solid black;
+  border: 1px solid rgb(254, 254, 254);
   padding: 4px;
-  background-color: rgba(255, 255, 255, 0.7);
+  color: rgb(254, 254, 254);
 }
 
 .table {
