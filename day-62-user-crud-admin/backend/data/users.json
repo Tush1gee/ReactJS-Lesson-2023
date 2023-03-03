@@ -1,10 +1,1 @@
-[
-  {
-    "firstName": "Tushig",
-    "lastName": "Munkhbayar",
-    "email": "tushig@gmail.com",
-    "password": "$2b$10$aSryvKTVmNSL.6bdLY20IuLPZFIHqadkh297XMHFEDA1x6abJo.UW",
-    "address": "address1234",
-    "role": { "id": 2, "name": "User" }
-  }
-]
+[{"firstName":"Tushig","lastName":"Munkhbayar","email":"tushig@gmail.com","password":"$2b$10$aSryvKTVmNSL.6bdLY20IuLPZFIHqadkh297XMHFEDA1x6abJo.UW","address":"address1234","role":{"id":2,"name":"User"}},{"firstName":"Tushig","lastName":"Munkhbayar","email":"tushig@gmail.com","password":"$2b$10$E6c0e6gW24e4ArWDk8nadupP2Xn3eNeSmi4ZtMULWjeAgC1E0/wbW","address":"address","role":{"id":2,"name":"User"}}]
