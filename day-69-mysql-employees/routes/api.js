@@ -12,6 +12,7 @@ import {
   getChildrenMenus,
   getParentMenus,
 } from "../services/menus-services.js";
+import { getAllProducts, search } from "../services/product-services.js";
 
 api_router.get("/employees", async (request, response) => {
   const result = await getEmployees();
@@ -54,6 +55,17 @@ api_router.post("/employee", async (request, response) => {
 
 api_router.get("/popular", async (request, response) => {
   const result = await getPopularCategories();
+  response.status(200).send(result);
+});
+
+api_router.get("/products", async (request, response) => {
+  const result = await getAllProducts();
+  response.status(200).send(result);
+});
+
+api_router.get("/search", async (request, response) => {
+  const keyword = request.query.keyword;
+  const result = await search(keyword);
   response.status(200).send(result);
 });
 
