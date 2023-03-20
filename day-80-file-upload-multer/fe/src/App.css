@@ -1,0 +1,29 @@
+* {
+  padding: 0;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+h1 {
+  color: rgb(14, 28, 96);
+  text-align: center;
+  margin-top: 20px;
+}
+
+.sbutton {
+  background-color: rgb(25, 50, 108);
+  color: white;
+  padding: 10px 30px;
+  border: none;
+  border-radius: 2px;
+  margin: 10px;
+}
+
+.sbutton:hover {
+  background-color: rgb(40, 70, 140);
+  color: white;
+  padding: 10px 30px;
+  border: none;
+  border-radius: 2px;
+  margin: 10px;
+}
