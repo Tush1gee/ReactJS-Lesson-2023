@@ -1,0 +1,16 @@
+GET http://localhost:8383/food HTTP/1.1
+Content-type: application/json
+
+###
+
+POST http://localhost:8383/food HTTP/1.1
+Content-Type: application/json
+
+{
+    "name": "Tushigee",
+    "email": "tush1g@gmail.com",
+    "createdOn": "2020-01-01",
+    "lastLogin": "2023-01-01"
+}
+
+###
