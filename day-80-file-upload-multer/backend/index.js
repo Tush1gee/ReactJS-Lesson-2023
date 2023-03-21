@@ -1,9 +1,13 @@
+console.log("Day 80 - File Upload Multer");
+
 const express = require("express");
 const cors = require("cors");
 const multer = require("multer");
+const fs = require("fs");
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
+    console.log(file);
     cb(null, "./uploads");
   },
   filename: (req, file, cb) => {
@@ -11,26 +15,46 @@ const storage = multer.diskStorage({
   },
 });
 
-const PORT = 8083;
 const app = express();
+const PORT = 8084;
 const upload = multer({ storage: storage });
 app.use("/uploads", express.static("uploads"));
 
 app.use(express.json());
 app.use(cors());
 
+app.get("/files", async (request, response) => {
+  const testFolder = "./uploads/";
+  const imgs = [];
+
+  fs.readdirSync(testFolder).forEach((file) => {
+    console.log(file);
+    const imgURl = `http://localhost:8084/uploads/${file}`;
+    imgs.push(imgURl);
+  });
+
+  response.status(200).json({
+    data: imgs,
+  });
+});
+
 app.get("/", (request, response) => {
-  response.send("<h1> Hello Day-80 File upload Multer </h1>");
+  response.send("<h1>Day - 80: Hello File Upload Multer</h1>");
 });
 
 app.post("/fileUpload", upload.single("image"), (request, response, next) => {
-  console.log(request.file);
-
+  // console.log(request.file);
+  const imgs = [];
+  fs.readdirSync("./uploads/").forEach((file) => {
+    console.log(file);
+    const fileUrl = `http://localhost:8084/uploads/${file}`;
+    imgs.push(fileUrl);
+  });
   response.json({
-    data: [],
+    data: imgs,
   });
 });
 
 app.listen(PORT, () => {
-  console.log(`Express is running on http://localhost:${PORT}`);
+  console.log(`Express is running on listening on http://localhost:${PORT}`);
 });
