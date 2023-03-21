@@ -1,42 +1,49 @@
-import React from "react";
-
+import { useEffect, useState } from "react";
 
 export default function FileUpload() {
+  const URL = "http://localhost:8084/fileUpload";
+  const FILE_URL = "http://localhost:8084/files";
+  const [imageURLs, setImageURLs] = useState([]);
 
-  const URL = "http://localhost:8083/fileUpload"
+  async function fetchFiles() {
+    const FETCHED_DATA = await fetch(FILE_URL);
+    const FETCHED_JSON = await FETCHED_DATA.json();
+    setImageURLs(FETCHED_JSON.data);
+  }
 
-  const handleFileSubmit =  async(event) =>  {
+  useEffect(() => {
+    fetchFiles();
+  }, []);
+
+  const handleFileUpload = async (event) => {
     event.preventDefault();
     console.log(event.target.image.files[0]);
-
     const data = new FormData();
     const files = event.target.image.files;
-    
-   data.append("image", files[0])
+    data.append("image", files[0]);
 
     const options = {
       method: "POST",
-      body: data
-    }
+      body: data,
+    };
 
-  const FETCHED_DATA = await fetch (URL, options);
-  const FETCHED_JSON = await FETCHED_DATA.json()
-  console.log(FETCHED_JSON);
-  }
-
+    const FETCHED_DATA = await fetch(URL, options);
+    const FETCHED_JSON = await FETCHED_DATA.json();
+    setImageURLs(FETCHED_JSON.data);
+  };
   return (
     <div>
-      <h1>File Upload Multer</h1>
-
-
-      <form method="post" encType="multipart/form-data" onSubmit={handleFileSubmit}>
-        <input type="file" name="image"></input>
-        <br />
-        <button type="submit" className="sbutton">Submit</button>
+      <form
+        method="post"
+        enctype="multipart/form-data"
+        onSubmit={handleFileUpload}
+      >
+        <input type="file" name="image" />
+        <button type="submit">Submit</button>
       </form>
-
-
-
+      {imageURLs.map((img) => (
+        <img src={img} alt="img" />
+      ))}
     </div>
   );
 }
