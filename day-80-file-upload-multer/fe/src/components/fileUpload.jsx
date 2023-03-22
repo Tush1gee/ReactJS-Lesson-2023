@@ -33,19 +33,14 @@ export default function FileUpload() {
   };
   return (
     <div className="container">
-      <form className="form-body"
-        method="post"
-        enctype="multipart/form-data"
-        onSubmit={handleFileUpload}
-      >
+      <form className="form-body" method="post" enctype="multipart/form-data" onSubmit={handleFileUpload}>
         <input type="file" name="image" className="choose-file"/>
         <button type="submit">UPLOAD</button>
       </form>
      
         {imageURLs.map((img) => (
-          <img src={img} className="picture-files" alt="img" />
-        ))}
-    
+          <img src={img} className="picture-files" alt="img"/>
+        ))}    
     </div>
   );
 }
