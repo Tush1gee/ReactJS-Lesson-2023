@@ -1,0 +1,16 @@
+POST http://localhost:8081/unprotected HTTP/1.1
+Content-Type: application/json
+
+{
+   "token" : ""
+}
+
+###
+POST http://localhost:8081/protected HTTP/1.1
+Content-Type: application/json
+
+{
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjQxYTY3NWVhMDdlNGJiOWY2YjNmYWVhIiwiZW1haWwiOiJ0dXNoMWdAZ21haWxjb20iLCJpYXQiOjE2Nzk0NTg2NTgsImV4cCI6MTY3OTQ2NTg1OH0.EJpaLOh17b05ZP1nsQjiLnGPydGX9ff3uW_MgoTKM3U"
+}
+
+###
