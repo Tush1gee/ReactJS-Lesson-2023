@@ -4,13 +4,11 @@
   box-sizing: border-box;
 }
 
-h1 {
-  color: rgb(14, 28, 96);
-  text-align: center;
-  margin-top: 20px;
+body {
+  background-color: rgb(13, 13, 13);
 }
 
-.sbutton {
+button {
   background-color: rgb(25, 50, 108);
   color: white;
   padding: 10px 30px;
@@ -19,11 +17,38 @@ h1 {
   margin: 10px;
 }
 
-.sbutton:hover {
+button:hover {
   background-color: rgb(40, 70, 140);
   color: white;
   padding: 10px 30px;
   border: none;
   border-radius: 2px;
   margin: 10px;
+}
+
+.picture-files{
+ background-color: white;
+ border-radius: 20px;
+ height: 200px;
+ padding: 30px;
+ margin: 10px;
+ box-shadow: 3px 3px 3px rgb(127, 127, 127)
+}
+
+.form-body {
+  width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  color: white;
+}
+
+.choose-file {
+ padding: 10px;
+ border-radius: 10px;
+ border: 1px solid rgb(255, 255, 255)
+}
+
+.container {
+  width: 1400px;
+  margin: 0 auto;
 }
