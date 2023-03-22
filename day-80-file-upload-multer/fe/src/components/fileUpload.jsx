@@ -32,18 +32,20 @@ export default function FileUpload() {
     setImageURLs(FETCHED_JSON.data);
   };
   return (
-    <div>
-      <form
+    <div className="container">
+      <form className="form-body"
         method="post"
         enctype="multipart/form-data"
         onSubmit={handleFileUpload}
       >
-        <input type="file" name="image" />
-        <button type="submit">Submit</button>
+        <input type="file" name="image" className="choose-file"/>
+        <button type="submit">UPLOAD</button>
       </form>
-      {imageURLs.map((img) => (
-        <img src={img} alt="img" />
-      ))}
+     
+        {imageURLs.map((img) => (
+          <img src={img} className="picture-files" alt="img" />
+        ))}
+    
     </div>
   );
 }
