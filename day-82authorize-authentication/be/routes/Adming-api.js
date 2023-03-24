@@ -14,39 +14,41 @@ admin_api_Router.get("/", (request, response) => {
 
 //---- register ----
 admin_api_Router.post("/register", async (request, response) => {
-  const { email, password } = request.body;
+  const data = request.body;
+  console.log(data);
 
-  if (email && password) {
-    const oldUser = await Users.findOne({ email: email });
+  if (data) {
+    const oldUser = await Users.findOne({ email: data.email });
 
     if (oldUser) {
-      return response.status(200).json({
-        data: "Та аль хэдийн бүртгэлтэй байна 🔴!!!",
+      return response
+        .status(200)
+        .json({ data: "Та аль хэдийн бүртгэлтэй байна 🔴!!!" });
+    }
+    let hashedPassword = await bcrypt.hash(data.password, 10);
+    data.password = hashedPassword;
+
+    try {
+      const user = await Users.create(data);
+      const result = await user.populate("userrole");
+      response.status(201).json({
+        message: "Хэрэглэгч Амжилттай үүслээ",
+        data: result,
+      });
+    } catch (error) {
+      response.status(500).json({
+        success: false,
+        error: error,
       });
     }
-    const hashedPassword = await bcrypt.hash(password, 10);
-
-    Users.create({ email: email, password: hashedPassword })
-      .then((data) => {
-        response.status(201).json({
-          message: "Хэрэглэгч Амжилттай үүслээ",
-          email: data.email,
-        });
-        return;
-      })
-      .catch((error) => {
-        return response.status(500).json({
-          success: false,
-          error,
-        });
-      });
   } else {
-    return response.status(200).json({
+    return response.json({
       data: "Хэрэглэгч олдсонгүй 🔴",
     });
   }
 });
 
+//login
 admin_api_Router.post("/login", async (request, response) => {
   try {
     const { email, password } = request.body;
