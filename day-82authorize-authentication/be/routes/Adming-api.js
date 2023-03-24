@@ -12,6 +12,7 @@ admin_api_Router.get("/", (request, response) => {
   });
 });
 
+//---- register ----
 admin_api_Router.post("/register", async (request, response) => {
   const { email, password } = request.body;
 
@@ -93,6 +94,13 @@ admin_api_Router.post("/role/create", async (request, response) => {
   const { name } = request.body;
   const result = await UserRole.create({ name });
 
+  response.status(200).json({
+    data: result,
+  });
+});
+
+admin_api_Router.get("/role/list", async (request, response) => {
+  const result = await UserRole.find({});
   response.status(200).json({
     data: result,
   });
