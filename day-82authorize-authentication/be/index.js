@@ -5,10 +5,11 @@ const cors = require("cors");
 const { default: mongoose } = require("mongoose");
 const admin_api_Router = require("./routes/Adming-api");
 const api_Router = require("./routes/Api");
+require("dotenv").config();
 
 const app = express();
-const PORT = 8081;
-const MONGOOSE_CONNECTIO_STRING = `mongodb+srv://Tush1gee2:xQ0fG9idxoFgXyCZ@cluster0.ifpf7qh.mongodb.net/test`;
+const PORT = process.env.PORT;
+const MONGOOSE_CONNECTIO_STRING = process.env.MONGOOSE_CONNECTIO_STRING;
 
 app.use(cors());
 app.use(express.json());
