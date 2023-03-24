@@ -4,6 +4,7 @@ const Users = require("../models/User");
 const admin_api_Router = express.Router();
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
+const UserRole = require("../models/UserRole");
 
 admin_api_Router.get("/", (request, response) => {
   response.status(200).json({
@@ -85,6 +86,16 @@ admin_api_Router.post("/login", async (request, response) => {
   } catch (error) {
     console.error("Aldaa garlaa", error);
   }
+});
+
+// Role vvsgedeg heseg
+admin_api_Router.post("/role/create", async (request, response) => {
+  const { name } = request.body;
+  const result = await UserRole.create({ name });
+
+  response.status(200).json({
+    data: result,
+  });
 });
 
 module.exports = admin_api_Router;
