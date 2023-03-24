@@ -5,7 +5,18 @@ import { useState } from "react";
 export default function Register() {
     const ROLE_URL = 'http://localhost:8081/role/list'
     const REGISTER_URL = "http://localhost:8081/role/register"
+
+    const initialFormData = Object.freeze({
+        firstname: '',
+        lastname: '',
+        email: "",
+        password: "",
+        roles: 0,
+        address: '', 
+    })
+
     const [ roles, setRoles] = useState([])
+    const [formData, setFormData] = useState(initialFormData)
 
     useEffect(()=> {
         fetchRoles();
@@ -15,6 +26,14 @@ export default function Register() {
         const FETCHED_DATA = await fetch(ROLE_URL)
         const FETCHED_JSON = await FETCHED_DATA.json()
         setRoles(FETCHED_JSON.data)
+    }
+
+    const handleChange = (e) => {
+        setFormData({
+            ...formData,
+            [e.target.name]: e.target.value.trim(),
+        })
+        console.log(formData)
     }
 
 
@@ -41,44 +60,44 @@ export default function Register() {
         <form onSubmit={handleSubmit}>
             <label>
             Firstname :
-            <input name="firstname" type="text"/>
+            <input name="firstname" type="text" onChange={handleChange}/>
             </label>
           <br />
           <label>
             Lastname:
-            <input name="lastname" type="text"/>
+            <input name="lastname" type="text" onChange={handleChange}/>
           </label>
           <br />
           <label>
             Email:
-          <input name="email" type="email"/>
+          <input name="email" type="email" onChange={handleChange}/>
           </label>
           <br/>
           <label>
             Password:
-          <input name="password" type="password"/>
+          <input name="password" type="password" onChange={handleChange}/>
           </label>
           <br/>
           <label>
             Phone:
-          <input name="phone" type="number"/>
+          <input name="phone" type="number" onChange={handleChange}/>
           </label>
           <br/>
           <lable>
             Roles:
-            <select name="roles">
+            <select name="roles" onChange={handleChange}>
                 {
                 roles && roles.map((role)=> 
-                    <option id={role._id}>
+                    <option id={role._id} value={role._id}>
                         {role.name}
                     </option>)
                 }
             </select>
           </lable>
           <br/>
-          <label>
+          <label htmlFor="address">
             Address:
-            <textarea name="" id="" cols="30" rows="10"></textarea>
+            <textarea onChange={handleChange}></textarea>
           </label>
           <br/>
           <button>Submit</button>

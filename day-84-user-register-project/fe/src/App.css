@@ -5,6 +5,11 @@ h1 {
 form {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  background-color: rgb(214, 243, 255);
+  width: 650px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 20px;
+  
 }
