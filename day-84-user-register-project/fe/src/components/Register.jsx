@@ -4,15 +4,15 @@ import { useState } from "react";
 
 export default function Register() {
     const ROLE_URL = 'http://localhost:8081/role/list'
-    const REGISTER_URL = "http://localhost:8081/role/register"
+    const REGISTER_URL = "http://localhost:8081/register"
 
     const initialFormData = Object.freeze({
         firstname: '',
         lastname: '',
         email: "",
         password: "",
-        roles: 0,
-        address: '', 
+        userrole: 0,
+        address: "", 
     })
 
     const [ roles, setRoles] = useState([])
@@ -22,7 +22,7 @@ export default function Register() {
         fetchRoles();
     }, [])
     
-    const fetchRoles = async ( ) => {
+    const fetchRoles = async () => {
         const FETCHED_DATA = await fetch(ROLE_URL)
         const FETCHED_JSON = await FETCHED_DATA.json()
         setRoles(FETCHED_JSON.data)
@@ -39,15 +39,13 @@ export default function Register() {
 
     const handleSubmit =  async (e) => {
         e.preventDefault()
-        console.log(e.target)
-        
-        const dataForm = new FormData(e.target)
         
         const options = {
             method: "POST",
             headers: {"Content-Type": "application/json"},
-            body: JSON.stringify(dataForm),
+            body: JSON.stringify(formData),
     };
+
     const FETCHED_DATA = await fetch(REGISTER_URL, options);
     const FETCHED_JSON = await FETCHED_DATA.json();
     console.log(FETCHED_JSON)
@@ -85,7 +83,7 @@ export default function Register() {
           <br/>
           <lable>
             Roles:
-            <select name="roles" onChange={handleChange}>
+            <select name="userrole" onChange={handleChange}>
                 {
                 roles && roles.map((role)=> 
                     <option id={role._id} value={role._id}>
@@ -97,7 +95,7 @@ export default function Register() {
           <br/>
           <label htmlFor="address">
             Address:
-            <textarea onChange={handleChange}></textarea>
+            <textarea name="address" onChange={handleChange}></textarea>
           </label>
           <br/>
           <button>Submit</button>
