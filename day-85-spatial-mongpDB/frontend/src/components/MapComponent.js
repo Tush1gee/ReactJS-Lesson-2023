@@ -1,11 +1,5 @@
-import { useContext } from "react";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
-import RestaurantContext from "../context/restaurants-context";
-
 export default function Map() {
-  const restaurants = useContext(RestaurantContext);
-  console.log(restaurants);
-  // const position = [51.505, -0.09];
   return (
     <div>
       <MapContainer center={[51.505, -0.09]} zoom={13} scrollWheelZoom={false}>
@@ -15,10 +9,6 @@ export default function Map() {
         />
 
         <Marker position={[51.505, -0.09]}>
-          {/* {restaurants.map((r) => {
-          return <RestaurantContext key={index} address={address} />;
-        })} */}
-
           <Popup>
             A pretty CSS3 popup. <br /> Easily customizable.
           </Popup>
