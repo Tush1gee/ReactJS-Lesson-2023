@@ -24,36 +24,39 @@ export const getTheaterById = async (req: Request, res: Response) => {
 
 
 export const getSearchByStreet = async (req: Request, res: Response) => {
+    const street: string = String(req.query.keyword)
     try{
-        const searchTheater = String(req.query.keyword)
-        res.status(200).json(searchTheater);
+        const theaters = await TheaterModel.findOne({
+            "location.address.street1": street
+        })
+        res.status(200).json(street);
     } catch(error) {
         res.status(404).json({data: []})
     }
 }
 
 export const getSearchByCityName = async (req: Request, res: Response) => {
+    const Cityname: string = String(req.query.keyword)
     try{
-        const searchTheater = String(req.query.keyword)
-        res.status(200).json(searchTheater);
+        res.status(200).json(Cityname);
     } catch(error) {
         res.status(404).json({data: []})
     }
 }
 
 export const getSearchByZipcode = async (req: Request, res: Response) => {
+    const Zipcode: string = String(req.query.keyword)
     try{
-        const searchTheater = String(req.query.keyword)
-        res.status(200).json(searchTheater);
+        res.status(200).json(Zipcode);
     } catch(error) {
         res.status(404).json({data: []})
     }
 }
       
 export const getSearchByState = async (req: Request, res: Response) => {
+    const State: string = String(req.query.keyword)
     try{
-        const searchTheater = String(req.query.keyword)
-        res.status(200).json(searchTheater);
+        res.status(200).json(State);
     } catch(error) {
         res.status(404).json({data: []})
     }
