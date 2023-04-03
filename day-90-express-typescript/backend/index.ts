@@ -2,6 +2,7 @@
 import express , {Express, Request, Response} from "express"
 import dotenv from "dotenv"
 import mongoose from "mongoose";
+import theaterRouter from "./routes/Theaters.api";
 
 require("dotenv").config();
 
@@ -37,6 +38,8 @@ app.get("/", (req: Request, res: Response) => {
   res.send(name);
 });
 
+
+app.use("/theaters", theaterRouter)
 
 app.listen(PORT, () => {
   console.log(
