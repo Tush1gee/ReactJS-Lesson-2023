@@ -31,6 +31,6 @@ interface ITheater {
 
 const TheatrSchema: Schema = new Schema ({});
 
-const TheaterModel = mongoose.model<ITheater>("Theatr", TheatrSchema)
+const TheaterModel = mongoose.model<ITheater>("Theaters", TheatrSchema)
 
 export default TheaterModel
