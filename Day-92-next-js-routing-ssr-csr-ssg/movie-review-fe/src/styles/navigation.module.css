@@ -1,0 +1,94 @@
+.container {
+  width: 1080px;
+  margin: auto;
+  max-width: 100%;
+}
+.header {
+  background-color: #fa320a;
+  display: flex;
+  align-items: center;
+  margin-top: 80px;
+  height: 103px;
+  color: white;
+  font-family: var(--font-mono);
+  justify-content: space-evenly;
+}
+
+
+.logoIMG {
+  height: 50px;
+}
+
+.searchINP {
+  width: 320px;
+  margin: 20px;
+}
+
+.searchBar {
+  width: 301px;
+  border-radius: 26px;
+  border: none;
+  height: 31px;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.searchINP input{
+  padding: 20px;
+  width: 301px;
+  height: 31px;
+  border-radius: 26px;
+  border: 1px solid white;
+  background-color: rgba(0,0,0,0.4);
+}
+
+.searchBar::placeholder {
+  color: white;
+  padding-left: 20px;
+}
+
+.navlinks {
+  display: flex;
+  width: 400px;
+  gap: 20px;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.navigateDiv {
+  display: flex;
+  justify-content: space-between;
+}
+
+.navigateDiv button {
+  display: inline-block;
+  border: none;
+  padding: 1rem 2rem;
+  margin: 0;
+  background-color: #fa320a;
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 14px;
+  cursor: pointer;
+  text-align: center;
+} 
+
+.font {
+  font-weight: 600;
+}
+
+.trendingBar {
+  background-color: rgba(0,0,0,.6);
+  display: flex;
+  justify-content: space-between;
+  color: white;
+  padding: 4px 10px;
+}
+
+.trendingBar h3 {
+  color: #ffe400;
+}
+
+.icons {
+  display: flex;
+  gap: 15px;
+}
