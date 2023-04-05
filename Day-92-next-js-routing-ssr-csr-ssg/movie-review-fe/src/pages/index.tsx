@@ -13,7 +13,13 @@ export async function getServerSideProps() { //backend heseg
 
 export default function Home(props: any): JSX.Element { // frontend heseg
   console.log(props)
+
+  const side = typeof window ? "client" : "server";
+
   return (
-    <div>Welcome!</div>
+    <div>
+      <div>Welcome!</div>
+      <div>You're currently on the {side}-side.</div> 
+    </div>
   )
 }
