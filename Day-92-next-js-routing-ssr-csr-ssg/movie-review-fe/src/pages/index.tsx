@@ -1,6 +1,9 @@
 import React from "react";
+import styles from "@/styles/Home.module.css"
 import Link from "next/link";
 import NavigationBar from "@/components/navigation.bar";
+
+
 export async function getServerSideProps() {
   //backend heseg
   const theaterRequest = await fetch("http://localhost:8384/theaters/list");
@@ -21,22 +24,8 @@ export default function Home(props: any): JSX.Element {
   const side = typeof window ? "client" : "server";
 
   return (
-    <div>
+    <div className={styles.main}>
       <NavigationBar/>
-      <div>Welcome!</div>
-      <div>You're currently on the {side}-side.</div>
-      <Link href="/about">About Page</Link>
-      <Link href="/contact">Contact Page</Link>
-      <Link href="/greeting/John?age=25">Greeting Page</Link>
-      {/* <Link href="/posts/2023-04-05/first-post">Post Page</Link> */}
-      <Link
-        href={{
-          pathname: "/posts/[date]/[slug]",
-          query: { date: "2023-04-05", slug: "first-post" },
-        }}
-      >
-        Post Page
-      </Link>
     </div>
   );
 }
