@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import NavigationBar from "@/components/navigation.bar";
 export async function getServerSideProps() {
   //backend heseg
   const theaterRequest = await fetch("http://localhost:8384/theaters/list");
@@ -21,6 +22,7 @@ export default function Home(props: any): JSX.Element {
 
   return (
     <div>
+      <NavigationBar/>
       <div>Welcome!</div>
       <div>You're currently on the {side}-side.</div>
       <Link href="/about">About Page</Link>
