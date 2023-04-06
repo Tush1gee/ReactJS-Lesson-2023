@@ -2,7 +2,7 @@ import React from "react";
 import styles from "@/styles/Home.module.css"
 import Link from "next/link";
 import NavigationBar from "@/components/navigation.bar";
-  import Movies from "./movies";
+import Movies from "../components/movies";
 
 
 export async function getServerSideProps() {

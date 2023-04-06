@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import styles from "@/styles/Movies.module.css"
 
 interface IMovies {
     plot: string;
@@ -82,15 +83,19 @@ export default function Movies():JSX.Element {
 
   return (
     <div>
-        <h1>Movies page</h1>
+      <h3> NEW & UPCOMING MOVIES</h3>
+    <div className={styles.etseg} >
         {
             movies.map((movie, index)=>
-            <div key={index}>
-               <img src={movie.poster} alt="" />
+
+            <div className={styles.movieCont} key={index}>
+               <img className={styles.poster} src={movie.poster} alt="" />
                <p>{movie.title}</p>
-                </div>
+            </div>
+
             )
         }
+        </div>
     </div>
   )
 }
