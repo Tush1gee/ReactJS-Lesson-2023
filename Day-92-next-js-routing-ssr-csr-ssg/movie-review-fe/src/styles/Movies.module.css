@@ -1,0 +1,15 @@
+.poster {
+    height: 258.1px;
+    border-radius: 4px;
+}
+
+.etseg {
+    display: flex;
+    font-family: Arial, Helvetica, sans-serif;
+    gap: 2px;
+    justify-content: center;
+}
+
+.movieCont p {
+    width: 180px;
+}
