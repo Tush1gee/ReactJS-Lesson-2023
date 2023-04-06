@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import styles from "@/styles/Movies.module.css"
 
 interface IMovies {
     plot: string;
@@ -55,7 +54,7 @@ interface IMovies {
   interface IImdb {
     rating: number;
     votes: number;
-    id: null;
+    id: number;
   }
   
   interface ITomatoes {
@@ -67,35 +66,24 @@ interface IMovies {
     numReviews: number;
     meter: number;
   }
+  
 
-
-export default function Movies():JSX.Element {
-    const [movies, setMovies] = useState<IMovies[]>([])
-    async function getMovies(): Promise<void> {
-        const response = await fetch("http://localhost:8384/movies/list");
+export default function MoviesDetail() {
+    const [moviesDetail, setMoviesDetail] = useState<IImdb[]>([])
+    async function getMoviesDetail(): Promise<void> {
+        const response = await fetch("http://localhost:8384/movies/detail")
         const movies = await response.json()
-        setMovies(movies)
+        setMoviesDetail(moviesDetail)
     }
 
-    useEffect(()=> {
-        getMovies();
-    },[])
+    useEffect(() => {
+        getMoviesDetail()
+    }, [])
+
 
   return (
-    <div className={styles.font}>
-      <h3 className={styles.font}> NEW & UPCOMING MOVIES</h3>
-    <div className={styles.etseg} >
-        {
-            movies.map((movie, index)=>
-
-            <div className={styles.movieCont} key={index}>
-               <a href="/movies/573a1390f29313caabcd4323"><img className={styles.poster} src={movie.poster} alt="poster-picture" /></a>
-               <p>{movie.title}</p>
-            </div>
-
-            )
-        }
-        </div>
+    <div>
+        <h1>Movie Detail Page</h1>
     </div>
   )
 }
