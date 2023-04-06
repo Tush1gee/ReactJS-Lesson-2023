@@ -16,8 +16,8 @@ app.get("/", (req: Request, res: Response) => {
   res.send(name);
 });
 
-app.use("/theaters", theaterRouter)
-app.use("/comments", CommentRouter)
+// app.use("/theaters", theaterRouter)
+// app.use("/comments", CommentRouter)
 app.use("/movies", MoviesRouter)
 
 app.listen(PORT, () => {
