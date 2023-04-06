@@ -13,10 +13,19 @@ export default function Navlinks(): JSX.Element {
     }, [navigate])
 
     return (
+    <div>
         <div className={styles.navigateDiv}>
-            <button className={styles.font}>What's the Tomatometer®?</button>
-            <button className={styles.font} onClick={() => setNavigate(true)}>Critics</button>
-            <button className={styles.font}>LOGIN/SIGNUP</button>
+            <a className={styles.font}>What's the Tomatometer®?</a>
+            <a className={styles.font} onClick={() => setNavigate(true)}>Critics</a>
+            <a className={styles.font}>LOGIN/SIGNUP</a>
         </div>
+        <div className={styles.nav}>
+            <a>MOVIES</a>
+            <a>TV SHOWS</a>
+            <a>MOVIE TRIVIA</a>
+            <a>NEWS</a>
+            <a>SHOWTIMES</a>
+        </div>
+    </div>
     )
 }

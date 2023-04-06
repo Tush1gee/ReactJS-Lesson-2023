@@ -12,17 +12,19 @@ export default function NavigationBar(): JSX.Element {
           </div>
           <Navlinks/>
       </div>
-      <div className={styles.trendingBar}>
-        <h3>TRENDINGON RT</h3>
-        <a href="/thesupermario">The Super Mario Bros. Movie First Reviews</a>
-        <div className={styles.icons}>
-          <p>F</p>
-          <p>T</p>
-          <p>I</p>
-          <p>P</p>
-          <p>Y</p>
+      <div className={styles.trendingBarFLEX}>
+        <div className={styles.trendingBar}>
+          <h3>TRENDINGON RT</h3>
+          <a href="/thesupermario">The Super Mario Bros. Movie First Reviews</a>
+        </div>
+          <div className={styles.icons}>
+            <p>F</p>
+            <p>T</p>
+            <p>I</p>
+            <p>P</p>
+            <p>Y</p>
+          </div>
         </div>
       </div>
-    </div>
   )
 }

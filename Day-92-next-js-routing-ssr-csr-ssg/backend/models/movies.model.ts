@@ -54,7 +54,7 @@ interface IAwards {
 interface IImdb {
   rating: number;
   votes: number;
-  id: null;
+  id: number;
 }
 
 interface ITomatoes {
