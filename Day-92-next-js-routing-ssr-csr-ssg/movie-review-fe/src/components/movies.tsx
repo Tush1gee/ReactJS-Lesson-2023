@@ -83,7 +83,7 @@ export default function Movies():JSX.Element {
 
   return (
     <div>
-      <h3 > NEW & UPCOMING MOVIES</h3>
+      <h3> NEW & UPCOMING MOVIES</h3>
     <div className={styles.etseg} >
         {
             movies.map((movie, index)=>
