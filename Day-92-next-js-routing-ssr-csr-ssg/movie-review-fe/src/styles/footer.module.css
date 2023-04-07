@@ -1,12 +1,67 @@
-.footer {
+.footerCont {
     background-color: #2a2c32;
-    width: 1100px;
+    width: 1150px;
     height: 250px;
-    padding: 10px;
+    padding: 16px 15px;
+}
+
+.footer {
     display: flex;
-    gap: 50px;
+    justify-content: space-between;
+    gap: 120px;
     color: white;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 12px;
-    line-height: 25px;
+    line-height: 20px;
+}
+
+.threeSection {
+   text-align: center;
+}
+
+.threeSection h1 {
+    font-size: 15px;
+}
+
+.threeSection h3 {
+    width: 270px;
+}
+
+
+.threeSection button {
+    padding: 10px 15px;
+    background-color: #3976dc;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    margin-top: 10px;
+}
+
+.lastSection h1{
+    font-size: 15px;
+}
+
+.privacy {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    margin-top: 50px;
+}
+
+.privacy p {
+    border-left: 1px solid rgb(147, 147, 147);
+    border-right: 1px solid rgb(147, 147, 147);
+    padding: 1px 10px;
+}
+
+.copyright {
+    width: 310px;
+    color: rgb(113, 113, 113);
+    margin: 0 auto;
+    margin-top: 37px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
 }
