@@ -1,7 +1,5 @@
 .container {
-  width: 1100px;
-  margin: auto;
-  max-width: 100%;
+  width: 1150px;
 }
 .header {
   background-color: #fa320a;
@@ -108,14 +106,19 @@
   font-family: "Franklin Gothic", "PT Sans",Arial,Sans-Serif;
   font-size: 16px;
   transition-duration: 300ms;
+  position: relative;
 }
 
 .nav a:hover {
   font-family: "Franklin Gothic", "PT Sans",Arial,Sans-Serif;
   font-size: 16px;
   background-color: white;
-  color: #fa320a;
+  color: #000000;
   border-radius: 4px;
+  width: 1050px;
+  height: 250px;
+  position: absolute;
+  box-shadow: 2px 3px 15px rgba(0, 0, 0, 0.5);
 }
 
 .trendingBarFLEX {
