@@ -89,7 +89,20 @@ export default function Movies():JSX.Element {
             movies.map((movie, index)=>
 
             <div className={styles.movieCont} key={index}>
-               <a href="/movies/573a1390f29313caabcd4323"><img className={styles.poster} src={movie.poster} alt="poster-picture" /></a>
+               <a href=""><img className={styles.poster} src={!movie.poster? "/cvr.png": movie.poster} alt="poster-picture" /></a>
+               <p>{movie.title}</p>
+            </div>
+
+            )
+        }
+        </div>
+        <h3 className={styles.font}> WARNER BROS: 100 YEARS, 100 ESSENTIAL MOVIES</h3>
+        <div className={styles.etseg} >
+        {
+            movies.map((movie, index)=>
+
+            <div className={styles.movieCont} key={index}>
+               <a href=""><img className={styles.poster} src={!movie.poster? "/cvr.png": movie.poster} alt="poster-picture" /></a>
                <p>{movie.title}</p>
             </div>
 
