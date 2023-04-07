@@ -115,6 +115,9 @@ export default function Movies():JSX.Element {
 
               <div className={styles.movieCont} key={index}>
                 <Link href={"http://localhost:8384/movies/list" + movie._id}><img className={styles.poster} src={!movie.poster? "/cvr.png": movie.poster} alt="poster-picture" /></Link>
+                <div>
+                  <p>{movie.tomatoes.viewer.meter}%</p>
+                </div>
                 <p>{movie.title}</p>
               </div>
 
@@ -134,6 +137,9 @@ export default function Movies():JSX.Element {
 
               <div className={styles.movieCont} key={index}>
                 <Link href={"http://localhost:8384/movies/list" + movie._id}><img className={styles.poster} src={!movie.poster? "/cvr.png": movie.poster} alt="poster-picture" /></Link>
+                <div>
+                  <p>{movie.tomatoes.viewer.meter}%</p>
+                </div>
                 <p>{movie.title}</p>
               </div>
 
