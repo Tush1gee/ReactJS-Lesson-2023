@@ -16,3 +16,13 @@ export const getMovies = async (req: Request, res: Response) => {
     }
   };
   
+  export const getMoviesById = async (req: Request, res: Response) => {
+    try {
+      const movie = await MoviesModel.find({
+        _id: req.params.id,
+      });
+      res.status(200).json(movie);
+    } catch (error) {
+      res.status(404).json({ data: [] });
+    }
+  };

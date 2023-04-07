@@ -3,6 +3,7 @@ import styles from "@/styles/Home.module.css"
 import Link from "next/link";
 import NavigationBar from "@/components/navigation.bar";
 import Movies from "../components/movies";
+import Footertsx from "@/components/footer";
 
 
 export async function getServerSideProps() {
@@ -28,6 +29,7 @@ export default function Home(props: any): JSX.Element {
     <div className={styles.main}>
       <NavigationBar/>
       <Movies/>
+      <Footertsx/>
     </div>
   );
 }
