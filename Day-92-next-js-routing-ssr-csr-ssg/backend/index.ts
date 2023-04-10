@@ -14,7 +14,7 @@ const MONGOOSE_CONNECTION_STRING = process.env.MONGOOSE_CONNECTION_STRING || "mo
 app.use(express.json());
 app.use(cors());
 app.get("/", (req: Request, res: Response) => {
-  res.send(name);
+  res.send("Hello");
 });
 
 // app.use("/theaters", theaterRouter)

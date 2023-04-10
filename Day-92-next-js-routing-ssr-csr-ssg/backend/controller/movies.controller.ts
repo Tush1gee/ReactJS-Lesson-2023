@@ -26,3 +26,12 @@ export const getMovies = async (req: Request, res: Response) => {
       res.status(404).json({ data: [] });
     }
   };
+
+  export const getMoviesDetail = async (req: Request, res: Response) => {
+    try {
+      const movie = await MoviesModel.findOne({_id: req.params.id,});
+      res.status(200).json(movie);
+    } catch (error) {
+      res.status(404).json({ data: [] });
+    }
+  };

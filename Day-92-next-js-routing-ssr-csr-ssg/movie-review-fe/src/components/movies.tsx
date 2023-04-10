@@ -3,71 +3,42 @@ import styles from "@/styles/Movies.module.css"
 import Link from "next/link";
 
 interface IMovies {
-    plot: string;
-    Genres: IGenres;
-    runtime: number;
-    cast: {
-      type: [string];
-    };
-    num_mflix_comments: number;
-    poster: string;
-    title: string;
-    fullplot: string;
-    languages: {
-      type: [string];
-    };
-    released: number;
-    directors: IDirectors;
-    writers: IWriters;
-    awards: IAwards;
-    lastUpdated: string;
-    year: number;
-    imdb: IImdb;
-    countries: {
-      type: [string];
-    };
-    type: string;
-    tomatoes: ITomatoes;
-  }
-  
-  interface IDirectors {
-    directors: {
-      type: [string];
-    };
-  }
-  
-  interface IGenres {
-    genres: {
-      type: [string];
-    };
-  }
-  interface IWriters {
-    genres: {
-      type: [string];
-    };
-  }
-  
-  interface IAwards {
+  _id: string;
+  plot: string;
+  genres: string[];
+  runtime: number;
+  cast: string[];
+  num_mflix_comments: number;
+  poster: string;
+  title: string;
+  fullplot: string;
+  languages: string[];
+  released: Date;
+  directors: string[];
+  writers: string[];
+  awards: {
     wins: number;
     nominations: number;
     text: string;
-  }
-  
-  interface IImdb {
+  };
+  lastupdated: Date;
+  year: number;
+  imdb: {
     rating: number;
     votes: number;
-    id: null;
-  }
-  
-  interface ITomatoes {
-    viewer: IViewer;
-    lastUpdated: number;
-  }
-  interface IViewer {
-    rating: number;
-    numReviews: number;
-    meter: number;
-  }
+    id: number;
+  };
+  countries: string[];
+  type: string;
+  tomatoes: {
+    viewer: {
+      rating: number;
+      numReviews: number;
+      meter: number;
+    };
+    lastUpdated: Date;
+  };
+}
 
 
 export default function Movies():JSX.Element {
@@ -111,8 +82,7 @@ export default function Movies():JSX.Element {
 
       <div className={styles.etseg} >
           {
-              movies.map((movie, index)=>
-
+            movies.map((movie, index)=>
               <div className={styles.movieCont} key={index}>
                 <Link href={"http://localhost:8384/movies/list" + movie._id}><img className={styles.poster} src={!movie.poster? "/cvr.png": movie.poster} alt="poster-picture" /></Link>
                 <div>
@@ -120,8 +90,7 @@ export default function Movies():JSX.Element {
                 </div>
                 <p>{movie.title}</p>
               </div>
-
-              )
+            )
           }
           </div>
           <br/>
